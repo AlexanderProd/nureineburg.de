@@ -19,8 +19,6 @@ import {
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
 
-  console.log(product.images[0].localFile)
-
   const ProductImages = product.images 
     ? product.images.map(elem => (
         <Img
@@ -43,8 +41,10 @@ const ProductPage = ({ data }) => {
             </GridLeft>
             <GridRight>
               <ProductTitle>{product.title}</ProductTitle>
-              <ProductDescription dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
               <ProductForm product={product} />
+              <ProductDescription 
+                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} 
+              />
             </GridRight>
           </TwoColumnGrid>
         </MainContent>
