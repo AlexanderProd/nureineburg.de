@@ -1,11 +1,40 @@
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Shopify Starter`,
+    title: `NurEineBurg - Mode im Zeichen der Burg`,
     description: `Kick off your next, ecommerce experience with this Gatsby starter. This starter ships with credentials to a shopify demo store so you can try it out immediately.`,
     author: `@alexanderhorl`,
+    primaryNav: [
+      {
+        name: 'Produkte',
+        link: '/products'
+      },
+      {
+        name: 'Über Uns',
+        link: '/page-2',
+      },
+      {
+        name: 'Kontakt',
+        link: '/404',
+      },
+    ],
+    secondaryNav: [
+      {
+        name: 'AGB',
+        link: '/page-2'
+      },
+      {
+        name: 'Impressum',
+        link: '/page-2',
+      },
+      {
+        name: 'Datenschutz',
+        link: '/404',
+      },
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -34,25 +63,18 @@ module.exports = {
     {
       resolve: `gatsby-source-shopify2`,
       options: {
-        // The domain name of your Shopify shop. This is required.
-        // Example: 'gatsby-source-shopify-test-shop' if your Shopify address is
-        // 'gatsby-source-shopify-test-shop.myshopify.com'.
         shopName: process.env.SHOP_NAME,
-
-        // An API access token to your Shopify shop. This is required.
-        // You can generate an access token in the "Manage private apps" section
-        // of your shop's Apps settings. In the Storefront API section, be sure
-        // to select "Allow this app to access your storefront data using the
-        // Storefront API".
-        // See: https://help.shopify.com/api/custom-storefronts/storefront-api/getting-started#authentication
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-
-        // Set verbose to true to display a verbose output on `npm run develop`
-        // or `npm run build`. This prints which nodes are being fetched and how
-        // much time was required to fetch and process the data.
-        // Defaults to true.
         verbose: true,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Montserrat', 'Old Standard TT', 'Roboto']
+        }
+      }
     },
     {
       resolve: `gatsby-plugin-google-analytics`,

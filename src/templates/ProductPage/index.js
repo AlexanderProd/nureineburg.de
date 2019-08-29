@@ -1,29 +1,55 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
 
+import Navigation from '../../components/Navigation'
 import ProductForm from '../../components/ProductForm'
-import { Img } from '../../utils/styles'
-
+import { 
+  Img, 
+  Container, 
+  TwoColumnGrid, 
+  GridLeft, 
+  GridRight,
+  MainContent,
+} from '../../utils/styles'
+import { 
+  ProductTitle, 
+  ProductDescription 
+} from './styles'
+ 
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
+
+  console.log(product.images[0].localFile)
+
+  const ProductImages = product.images 
+    ? product.images.map(elem => (
+        <Img
+          fluid={elem.localFile.childImageSharp.fluid}
+          key={elem.id}
+          alt={product.title}
+        />
+      ))
+    : null
+
+
   return (
-    <Flex flexWrap='wrap'>
-      <Box pr={[null, 3]} width={[1, 1/2]}>
-        {product.images.map(x => (
-          <Img
-            fluid={x.localFile.childImageSharp.fluid}
-            key={x.id}
-            alt={product.title}
-          />
-        ))}
-      </Box>
-      <Box width={[1, 1/2]}>
-        <h1>{product.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
-        <ProductForm product={product} />
-      </Box>
-    </Flex >
+    <>
+      <Navigation/>
+      <Container>
+        <MainContent>
+          <TwoColumnGrid>
+            <GridLeft>
+              {ProductImages}
+            </GridLeft>
+            <GridRight>
+              <ProductTitle>{product.title}</ProductTitle>
+              <ProductDescription dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} />
+              <ProductForm product={product} />
+            </GridRight>
+          </TwoColumnGrid>
+        </MainContent>
+      </Container>
+    </>
   )
 }
 
