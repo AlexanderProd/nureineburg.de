@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   grid-template-rows: auto;
   grid-template-areas: "left right";
 
-  @media (max-width: ${breakpoints.l}){
+  @media (max-width: ${breakpoints.l}px){
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +30,7 @@ export const HamburgerWrapper = styled.span`
   z-index: 23;
   cursor: pointer;
 
-  @media (min-width: ${breakpoints.l}){
+  @media (min-width: ${breakpoints.l}px){
     display: none;
   }
 `
@@ -65,7 +65,7 @@ export const MenuItem = styled(Link)`
     text-decoration: underline;
   }
 
-  @media (min-width: ${breakpoints.l}){
+  @media (min-width: ${breakpoints.l}px){
     display: block;
   }
 `

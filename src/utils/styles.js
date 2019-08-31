@@ -14,10 +14,10 @@ export const colors = {
 }
 
 export const breakpoints = {
-  s: '576px',
-  m: '768px',
-  l: '992px',
-  xl: '1200px',
+  s: 576,
+  m: 768,
+  l: 992,
+  xl: 1200,
 }
 
 export const GlobalStyle = props => (
@@ -57,8 +57,13 @@ export const Container = styled.div`
 `
 
 export const MainContent = styled.main`
-  padding-top: 80px;
-  padding-bottom: 40px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+
+  @media (max-width: ${breakpoints.l}px){
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
 `
 
 export const TwoColumnGrid = styled.div`
@@ -67,7 +72,7 @@ export const TwoColumnGrid = styled.div`
   grid-template-rows: 1auto;
   grid-template-areas: "left . right";
 
-  @media (max-width: ${breakpoints.l}){
+  @media (max-width: ${breakpoints.l}px){
     display: block;
   }
 `

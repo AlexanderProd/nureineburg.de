@@ -1,34 +1,61 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { Slide } from 'react-slideshow-image'
 
 import Navigation from '../../components/Navigation'
 import ProductForm from '../../components/ProductForm'
-import { 
-  Img, 
+import { useWindowDimensions } from '../../utils/hooks'
+import {
+  breakpoints,
+  Img,
   Container, 
   TwoColumnGrid, 
   GridLeft, 
   GridRight,
   MainContent,
 } from '../../utils/styles'
-import { 
-  ProductTitle, 
-  ProductDescription 
+import {
+  ProductTitle,
+  ProductDescription
 } from './styles'
- 
+
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
+  
+  const ProductImages = () => {
+    const { width } = useWindowDimensions()
 
-  const ProductImages = product.images 
-    ? product.images.map(elem => (
+    const properties = {
+      duration: 5000,
+      transitionDuration: 350,
+      infinite: false,
+      indicators: true,
+      arrows: true,
+    }
+
+    if (product.images) {
+      if (width < breakpoints.s) {
+        return (
+          <Slide {...properties}>
+            {product.images.map(i => (
+              <Img
+                fluid={i.localFile.childImageSharp.fluid}
+                alt={product.title}
+                key={i.id}
+              />
+            ))}
+          </Slide>
+        )
+      }
+      return product.images.map(i => (
         <Img
-          fluid={elem.localFile.childImageSharp.fluid}
-          key={elem.id}
+          fluid={i.localFile.childImageSharp.fluid}
           alt={product.title}
+          key={i.id}
         />
       ))
-    : null
-
+    }
+  }
 
   return (
     <>
@@ -37,7 +64,7 @@ const ProductPage = ({ data }) => {
         <MainContent>
           <TwoColumnGrid>
             <GridLeft>
-              {ProductImages}
+              <ProductImages/>
             </GridLeft>
             <GridRight>
               <ProductTitle>{product.title}</ProductTitle>

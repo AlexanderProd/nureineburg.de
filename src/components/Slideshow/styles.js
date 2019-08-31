@@ -33,7 +33,7 @@ export const H1 = styled.h1`
   margin: 0 0 0.5rem;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
 
-  @media (max-width: ${breakpoints.l}){
+  @media (max-width: ${breakpoints.l}px){
     font-size: 3rem;
   }
 `
@@ -46,7 +46,7 @@ export const H2 = styled.h1`
   letter-spacing 0.1rem;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
 
-  @media (max-width: ${breakpoints.l}){
+  @media (max-width: ${breakpoints.l}px){
     font-size: 0.9rem;
   }
 `

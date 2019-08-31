@@ -8,7 +8,7 @@ export const Grid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
 
-  @media (max-width: ${breakpoints.s}){
+  @media (max-width: ${breakpoints.s}px){
     grid-template-columns: repeat(1, 1fr);
   }
 `
