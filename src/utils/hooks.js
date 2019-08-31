@@ -11,6 +11,11 @@ export const useWindowDimensions = () => {
         height
       }
     }
+    // fallback for headless build process
+    return { 
+      width: 1920, 
+      height: 1080 
+    }
   }
 
   useEffect(() => {
