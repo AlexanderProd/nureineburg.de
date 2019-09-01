@@ -27,7 +27,7 @@ const slides = [
     firstText: 'Erster Text',
     secondText: 'Zweiter Text',
     buttonLink: '/',
-    buttonText: 'Hallo',
+    buttonText: 'Jetzt Shoppen',
     color: 'white',
   },
   {
@@ -36,7 +36,7 @@ const slides = [
     firstText: 'Erster Text',
     secondText: 'Zweiter Text',
     buttonLink: '/cart',
-    buttonText: 'Lorem',
+    buttonText: 'Jetzt Shoppen',
     color: 'white',
   },
 ]
@@ -50,12 +50,9 @@ const IndexPage = () => (
     </SlideWrapper>
     <Wrapper>
       <Container>
-        <button onClick={() => console.log('halll')}>
-          hallo
-        </button>
-        <p>hallo</p>
-        <Link to="/page-2/">Go to page 2</Link>
-        <h3>56</h3>
+        <p>
+          Lorem Ipsum
+        </p>
       </Container>
     </Wrapper>
   </>

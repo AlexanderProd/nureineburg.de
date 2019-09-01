@@ -100,3 +100,25 @@ export const PageTitle = styled.h1`
     width: 50px;
   }
 `
+
+export const Button = styled.button`
+  color: ${({ color }) => color ? color : 'white'};
+  background-color: ${({ backgroundColor }) => backgroundColor ? backgroundColor : 'black'};
+  font-family: "Montserrat","HelveticaNeue","Helvetica Neue",sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  font-size: 0.8125em;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: normal;
+
+  :hover {
+    opacity: 0.8;
+  }
+`
