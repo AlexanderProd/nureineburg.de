@@ -20,7 +20,7 @@ const CartIcon = ({ size = 32, count = 0, countColor = 'currentColor', color, on
         />
       </g>
       {count && count > 0 ? (
-        <text fill={countColor} x="24.5" y="28" textAnchor="middle" fontSize="22" fontFamily="'Metropolis'">
+        <text fill={countColor} x="24.5" y="28" textAnchor="middle" fontSize="20" fontFamily="sans-serif">
           {count}
         </text>
       ) : null}
