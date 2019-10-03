@@ -27,6 +27,7 @@ export const PrimaryNavItem = styled.li`
   margin-bottom: 0;
   padding: 15px 1.45rem 15px;
   position: relative;
+  cursor: pointer;
 
   :after {
     content: '';
@@ -45,4 +46,5 @@ export const SecondaryNavItem = styled.li`
   margin-bottom: 0;
   padding: 15px 1.45rem 15px;
   position: relative;
+  cursor: pointer;
 `
