@@ -3,13 +3,15 @@ import { useStaticQuery, navigate } from 'gatsby'
 
 import StoreContext from '../../context/StoreContext'
 import LayoutContext from '../../context/LayoutContext'
+import { useWindowDimensions } from '../../utils/hooks'
 import { Container } from '../../utils/styles'
 import MobileNav from './MobileNav'
 import HamburgerIcon from './HamburgerIcon'
 import CloseIcon from './CloseIcon'
 import CartIcon from './CartIcon'
 import Logo from './Logo'
-import { 
+import { breakpoints } from '../../utils/styles'
+import {
 	MenuItem, 
 	Wrapper, 
 	GridLeft, 
@@ -37,6 +39,7 @@ const Navigation = ({ color }) => {
 	} = useContext(LayoutContext)
 	const [quantity, setQuantity] = useState(countQuantity(checkout))
 	const [navBarColor, setNavBarColor] = useState(color)
+	const { width } = useWindowDimensions()
 	const { site: { siteMetadata }} = useStaticQuery(graphql`
     query Navigation {
 			site {
@@ -62,13 +65,13 @@ const Navigation = ({ color }) => {
 		setQuantity(countQuantity(checkout))
 	}, [checkout])
 
-	/* useEffect(() => {
-		if (!mobileNavVisible) {
-			setNavBarColor(navBarColor)
-		} else {
+	useEffect(() => {
+		if (mobileNavVisible) {
 			setNavBarColor('white')
+		} else {
+			setNavBarColor(color)
 		}
-	}, [mobileNavVisible]) */
+	}, [mobileNavVisible])
 
 	return (
 		<>
@@ -76,10 +79,10 @@ const Navigation = ({ color }) => {
 			<Container>
 				<Wrapper>
 					{mobileNavVisible 
-						? <CloseIcon color={color} onClick={toggleMobileNav} /> 
-						: <HamburgerIcon color={color} onClick={toggleMobileNav} />}
+						? <CloseIcon color={navBarColor} onClick={toggleMobileNav} /> 
+						: <HamburgerIcon color={navBarColor} onClick={toggleMobileNav} />}
 					<GridLeft>
-						<Logo to='/' color={color} height='1.3rem' />
+						<Logo to='/' color={navBarColor} height={width > breakpoints.s ? '1.3rem' : '1.1rem'} />
 					</GridLeft>
 					<GridRight>
 						<MenuWrapper>
