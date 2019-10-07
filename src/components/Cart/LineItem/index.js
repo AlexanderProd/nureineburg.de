@@ -1,45 +1,75 @@
 import React, { useContext } from 'react'
 
 import StoreContext from '../../../context/StoreContext'
-import { Wrapper } from './styles'
+import { 
+  Wrapper,
+  ProductImage,
+  RightSide,
+  LastRow,
+  Price,
+  ButtonWrapper,
+  QuantityInput,
+  QuantityButton
+} from './styles'
 
 const LineItem = props => {
-  const { line_item } = props
   const { 
-    removeLineItem,
+    item, 
+    currencyCode,
     client,
-    checkout 
+    checkout
+  } = props
+  const { 
+    updateLineItem,
   } = useContext(StoreContext)
 
-  const variantImage = line_item.variant.image 
-    ? <img
-        src={line_item.variant.image.src}
-        alt={`${line_item.title} product shot`}
-        height='60px'
+  const variantImage = item.variant.image 
+    ? <ProductImage
+        src={item.variant.image.src}
+        alt={`${item.title} product shot`}
       />
     : null
 
-  const selectedOptions = line_item.variant.selectedOptions 
-    ? line_item.variant.selectedOptions.map(option => (
-        `${option.name}: ${option.value} `
+  const selectedOptions = item.variant.selectedOptions 
+    ? item.variant.selectedOptions.map(option => (
+        `${option.value}`
       ))
     : null
 
-  const handleRemove = () => {
-    removeLineItem(client, checkout.id, line_item.id)
+  const price = Intl.NumberFormat(undefined, {
+    currency: currencyCode ? currencyCode : 'EUR',
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(parseFloat(item ? item.variant.price : 0));
+
+  const handleInput = ({ target }) => {
+    switch (target.name) {
+      case 'plus':
+        updateLineItem(client, checkout.id, item.id, item.quantity + 1)
+        break;
+      case 'minus':
+        updateLineItem(client, checkout.id, item.id, item.quantity - 1)
+        break;
+      default:
+        break;
+    }
   }
 
   return (
     <Wrapper>
       {variantImage}
-      <p>
-        {line_item.title}
-        {`  `}
-        {line_item.variant.title === ! 'Default Title' ? line_item.variant.title : ''}
-      </p>
-      {selectedOptions}
-      {line_item.quantity}
-      <button onClick={handleRemove}>Remove</button>
+      <RightSide>
+        <span>{item.title}</span>
+        <span>{selectedOptions}</span>
+        <LastRow>
+          <ButtonWrapper>
+            <QuantityButton onClick={handleInput} name='minus'>-</QuantityButton>
+            <QuantityInput type='number' value={item.quantity} disabled/>
+            <QuantityButton onClick={handleInput} name='plus'>+</QuantityButton>
+          </ButtonWrapper>
+          <Price>{price}</Price>
+        </LastRow>
+      </RightSide>
     </Wrapper>
   )
 }
