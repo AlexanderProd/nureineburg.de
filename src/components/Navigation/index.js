@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useStaticQuery, navigate } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import StoreContext from '../../context/StoreContext'
 import LayoutContext from '../../context/LayoutContext'
 import { useWindowDimensions } from '../../utils/hooks'
 import { Container } from '../../utils/styles'
+import Cart from '../Cart'
 import MobileNav from './MobileNav'
 import HamburgerIcon from './HamburgerIcon'
 import CloseIcon from './CloseIcon'
@@ -35,7 +36,9 @@ const Navigation = ({ color }) => {
 	const { 
 		mobileNavVisible, 
 		toggleMobileNav,
-		setMobileNavVisible
+		setMobileNavVisible,
+		cartVisible,
+		toggleCart
 	} = useContext(LayoutContext)
 	const [quantity, setQuantity] = useState(countQuantity(checkout))
 	const [navBarColor, setNavBarColor] = useState(color)
@@ -76,6 +79,7 @@ const Navigation = ({ color }) => {
 	return (
 		<>
 			<MobileNav visible={mobileNavVisible} />
+			<Cart visible={cartVisible} setVisibility={toggleCart}/>
 			<Container>
 				<Wrapper>
 					{mobileNavVisible 
@@ -90,7 +94,7 @@ const Navigation = ({ color }) => {
 							<CartIcon 
 								onClick={() => {
 									setMobileNavVisible(false)
-									navigate('/cart')
+									toggleCart()
 								}}
 								color={navBarColor} 
 								count={quantity}

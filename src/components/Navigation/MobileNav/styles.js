@@ -29,7 +29,7 @@ export const PrimaryNavItem = styled.li`
   position: relative;
   cursor: pointer;
 
-  :after {
+  &:after {
     content: '';
     position: absolute;
     bottom: 0;
