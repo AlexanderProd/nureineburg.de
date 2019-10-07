@@ -20,7 +20,6 @@ export const ItemsList = styled.ul`
 `
 
 export const PrimaryNavItem = styled.li`
-  font-family: Roboto, HelveticaNeue, Helvetica Neue, sans-serif;
   font-weight: 300;
   line-height: 1.6;
   font-size: 1.5rem;
@@ -40,7 +39,6 @@ export const PrimaryNavItem = styled.li`
 `
 
 export const SecondaryNavItem = styled.li`
-  font-family: Roboto, HelveticaNeue, Helvetica Neue, sans-serif;
   font-weight: 300;
   font-size: 1rem;
   margin-bottom: 0;

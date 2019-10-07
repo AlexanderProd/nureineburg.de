@@ -20,7 +20,6 @@ export const Product = styled.div`
 `
 
 export const Title = styled.span`
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-weight: 300;
   font-style: italic;
   font-size: 1.25rem;
@@ -28,7 +27,6 @@ export const Title = styled.span`
 `
 
 export const PriceTag = styled.span`
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-weight: 300;
   font-size: 1rem;
   text-align: center;

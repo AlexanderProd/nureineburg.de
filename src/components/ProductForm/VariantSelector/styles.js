@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
 export const OptionsLabel = styled.label`
   font-weight: normal;
   text-align: center;
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-size: 16px;
 `
 

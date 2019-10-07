@@ -69,7 +69,6 @@ export const Price = styled.span`
 
 export const Notice = styled.p`
   font-size: 16px;
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-style: italic;
   font-weight: normal;
   opacity: 0.7;

@@ -26,7 +26,6 @@ export const OptionName = styled.h3`
   text-align: center;
   font-size: ${typo.small};
   line-height: ${typo.lineRegular};
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-weight: 300;
   margin: 0;
   margin-bottom: 0.5rem;

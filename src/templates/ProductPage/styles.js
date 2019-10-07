@@ -13,6 +13,5 @@ export const ProductTitle = styled.h1`
 
 export const ProductDescription = styled.div`
   margin-top: 40px;
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   font-weight: 300;
 `
