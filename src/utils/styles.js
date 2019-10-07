@@ -20,6 +20,21 @@ export const breakpoints = {
   xl: 1200,
 }
 
+export const typo = {
+  xLarge: '40px',
+  large: '30px',
+  regular: '20px',
+  small: '15px',
+  lineXLarge: '48px',
+  lineLarge: '32px',
+  lineRegular: '24px',
+  lineSmall: '16px',
+}
+
+export const layout = {
+  spacing: 8,
+}
+
 export const GlobalStyle = props => (
   <Global
     {...props}
@@ -115,10 +130,36 @@ export const Button = styled.button`
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
-  border: 1px solid transparent;
+  border: none;
   white-space: normal;
 
   :hover {
     opacity: 0.8;
   }
+
+  :disabled {
+    background-color: #F6F6F6;
+    color: #717171;
+    cursor: default;
+
+    :hover {
+      opacity: 1;
+    }
+  }
+`
+
+export const Select = styled.select`
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0.8125rem 1rem;
+  font-size: 0.8125rem;
+  border: 1pt solid black;
+  border-radius: 0px;
+  font-family: "Montserrat","HelveticaNeue","Helvetica Neue",sans-serif;
+  text-transform: uppercase;
+  background-color: RGBA(255, 255, 255, 0);
 `
