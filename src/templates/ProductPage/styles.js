@@ -8,6 +8,7 @@ export const ProductTitle = styled.h1`
   font-weight: 400;
   margin: 0 0 0.5rem;
   line-height: 1.4;
+  text-align: center;
 `
 
 export const ProductDescription = styled.div`
