@@ -34,7 +34,7 @@ const ProductPage = ({ data }) => {
     }
 
     if (product.images) {
-      if (width < breakpoints.s) {
+      if (width < breakpoints.l) {
         return (
           <Slide {...properties}>
             {product.images.map(i => (
@@ -103,6 +103,16 @@ export const query = graphql`
         selectedOptions {
           name
           value
+        }
+      }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+        maxVariantPrice {
+          amount
+          currencyCode
         }
       }
       images {
