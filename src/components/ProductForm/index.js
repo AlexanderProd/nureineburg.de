@@ -1,98 +1,99 @@
 import React, { useState, useContext, useEffect } from 'react'
+import find from 'lodash/find'
+import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
 
 import StoreContext from '../../context/StoreContext'
-import VariantSelector from './VariantSelector'
-import { 
-  ProductPrice 
+import { Button } from '../../utils/styles'
+import {
+  Wrapper,
+  ProductOptions,
+  OptionName,
+  OptionValues,
+  ProductPrice,
+  ProductValue,
 } from './styles'
 
-const ProductForm = props => {
-  const [quantity, setQuantity] = useState(1)
-  const [variant, setVariant] = useState(props.product.variants[0])
+const ProductForm = ({ product }) => {
+  const { 
+    options,
+    variants,
+    variants: [initialVariant],
+    priceRange: { minVariantPrice },
+  } = product
+  const [variant, setVariant] = useState({ ...initialVariant })
+  const [quantity] = useState(1)
   const { 
     client,
     adding,
     addVariantToCart
   } = useContext(StoreContext)
 
-  const hasVariants = props.product.variants.length > 1
   const productVariant =
-    client.product.helpers.variantForOptions(props.product, variant) ||
+    client.product.helpers.variantForOptions(product, variant) ||
     variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
 
   useEffect(() => {
-    let defaultOptionValues = {}
-    props.product.options.forEach(selector => {
-      defaultOptionValues[selector.name] = selector.values[0]
-    })
-    setVariant(defaultOptionValues)
-  }, [])
-
-  useEffect(() => {
-    checkAvailability(props.product.shopifyId)
+    checkAvailability(product.shopifyId)
   }, [productVariant])
 
   const checkAvailability = productId => {
-    client.product.fetch(productId).then((product) => {
+    client.product.fetch(productId).then(product => {
       // this checks the currently selected variant for availability
-      const result = product.variants.filter(
-        variant => variant.id === productVariant.shopifyId
+      const result = variants.filter(
+        variant => variant.shopifyId === productVariant.shopifyId
       )
-      setAvailable(result[0].available)
+      setAvailable(result[0].availableForSale)
     })
   }
- 
-  const handleQuantityChange = event => {
-    setQuantity(event.target.value)
-  }
 
-  const handleOptionChange = event => {
-    const { target } = event
-    setVariant(prevState => ({
-      ...prevState,
-      [target.name]: target.value,
-    }))
-  }
+  const handleClick = (optionIndex, value) => {
+    const currentOptions = [...variant.selectedOptions];
+
+    currentOptions[optionIndex] = {
+      ...currentOptions[optionIndex],
+      value,
+    };
+
+    const selectedVariant = find(variants, ({ selectedOptions }) => isEqual(currentOptions, selectedOptions));
+
+    setVariant({ ...selectedVariant });
+  };
 
   const handleAddToCart = () => {
     addVariantToCart(productVariant.shopifyId, quantity)
   }
 
-  const variantSelectors = hasVariants
-    ? props.product.options.map(option => {
-        return (
-          <VariantSelector
-            onChange={handleOptionChange}
-            key={option.id.toString()}
-            option={option}
-          />
-        )
-      })
-    : null
+  const price = Intl.NumberFormat(undefined, {
+    currency: minVariantPrice.currencyCode,
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(variant.price);
 
   return (
-    <>
-      <ProductPrice>{productVariant.price} €</ProductPrice>
-      <br/>
-      {variantSelectors}
-      <label htmlFor="quantity">Quantity </label>
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        step="1"
-        onChange={handleQuantityChange}
-        value={quantity}
-      />
-      <br/>
-      <button type="submit" disabled={!available || adding} onClick={handleAddToCart}>
-        Add to Cart
-      </button>
-      {!available && <p>This Product is out of Stock!</p>}
-    </>
+    <Wrapper>
+      <ProductPrice>{price}</ProductPrice>
+      {options.map(({ id, name, values }, optionIndex) => (
+        <ProductOptions key={id}>
+          <OptionName>{name}</OptionName>
+          <OptionValues>
+            {values.map(value => (
+              <ProductValue
+                key={`${id}-${value}`}
+                active={variant.selectedOptions[optionIndex].value === value}
+                onClick={() => handleClick(optionIndex, value)}
+              >
+                {value}
+              </ProductValue>
+            ))}
+          </OptionValues>
+        </ProductOptions>
+      ))}
+      <Button type="submit" disabled={!available || adding} onClick={handleAddToCart}>
+        {available ? 'In den Einkaufswagen legen' : 'Ausverkauft'}
+      </Button>
+    </Wrapper>
   )
 }
 
