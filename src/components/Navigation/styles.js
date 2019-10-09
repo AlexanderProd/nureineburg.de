@@ -54,7 +54,7 @@ export const MenuItem = styled(Link)`
 	color: ${({ color }) => color ? color : 'black'};
 	text-decoration: none;
   font-size: 1rem;
-  padding-right: 1.45rem;
+  margin-right: 1.45rem;
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   font-family: Montserrat, HelveticaNeue, Helvetica Neue, Helvetica, sans-serif;
@@ -62,7 +62,7 @@ export const MenuItem = styled(Link)`
   display: none;
 
   &:hover {
-    text-decoration: underline;
+    border-bottom: 1pt solid ${({ color }) => color ? color : 'black'};
   }
 
   @media (min-width: ${breakpoints.l}px){
