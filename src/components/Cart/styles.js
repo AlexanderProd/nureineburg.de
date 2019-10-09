@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   right: 0;
   visibility: ${({ visible }) => visible ? 'visible' : 'hidden'};
   z-index: 22;
-  position: absolute; 
+  position: fixed; 
   width: ${({ visible }) => visible ? '100%' : '0'};
   min-height: 100%;
   height: 100%;
