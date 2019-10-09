@@ -164,3 +164,11 @@ export const Select = styled.select`
   text-transform: uppercase;
   background-color: RGBA(255, 255, 255, 0);
 `
+
+export const SmallLine = styled.hr`
+  margin: 20px auto;
+  border-width: 1px 0 0 0;
+  width: 50px;
+  clear: both;
+  border-top: solid #1c1d1d;
+`
