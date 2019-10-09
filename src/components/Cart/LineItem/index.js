@@ -7,6 +7,7 @@ import {
   RightSide,
   LastRow,
   Price,
+  ProductName,
   ButtonWrapper,
   QuantityInput,
   QuantityButton
@@ -59,7 +60,7 @@ const LineItem = props => {
     <Wrapper>
       {variantImage}
       <RightSide>
-        <span>{item.title}</span>
+        <ProductName>{item.title}</ProductName>
         <span>{selectedOptions}</span>
         <LastRow>
           <ButtonWrapper>

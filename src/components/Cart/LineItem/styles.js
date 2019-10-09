@@ -23,6 +23,12 @@ export const RightSide = styled.div`
   align-content: flex-start;
 `
 
+export const ProductName = styled.p`
+  margin-top: 0px;
+  line-height: 1.3;
+  font-style: italic;
+`
+
 export const LastRow = styled.div`
   display: flex; 
   justify-content: space-between;
@@ -43,12 +49,12 @@ export const ButtonWrapper = styled.div`
 `
 
 export const QuantityInput = styled.input`
+  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   margin: 0;
   padding: 0;
   background-color: transparent;
   text-align: center;
   color: white;
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   border: 1px solid #343535;
   font-size: 16px;
   line-height: 1.563;
@@ -61,7 +67,6 @@ export const QuantityButton = styled.button`
   background-color: transparent;
   text-align: center;
   color: white;
-  font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
   border: 1px solid #343535;
   font-size: 16px;
   line-height: 1.563;
