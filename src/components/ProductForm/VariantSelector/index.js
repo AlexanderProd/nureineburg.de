@@ -37,41 +37,6 @@ const VariantSelector = props => {
   )
 }
 
-/* const VariantSelectorNew = ({ option, onChange }) => {
-
-  const Options = option.values
-    ? option.values.map(value => (
-      <React.Fragment key={`${option.name}-${value}`}>
-        <OptionInput 
-          htmlFor={value}
-          type='radio'
-          value={value}
-          onChange={() => onChange}
-          disabled={true}
-        />
-        {console.log(option)}
-        <OptionLabel id={value}>
-          {value}
-        </OptionLabel>
-      </React.Fragment>
-    ))
-    : null
-
-  return (
-    <Wrapper>
-      <OptionsLabel htmlFor={option.name}>
-        {option.name}
-      </OptionsLabel>
-      <OptionsWrapper 
-        name={option.name}
-        id={option.name}
-      >
-        {Options}
-      </OptionsWrapper>
-    </Wrapper>
-  )
-} */
-
 VariantSelector.propTypes = {
   onChange: PropTypes.func,
   option: PropTypes.shape({

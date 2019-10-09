@@ -56,7 +56,6 @@ const ProductGrid = () => {
 
   return (
     <Grid>
-      {console.log(checkout.currencyCode)}
       {allShopifyProduct.edges
         ? allShopifyProduct.edges.map(({ node }) => (
           <Product key={node.id} >
