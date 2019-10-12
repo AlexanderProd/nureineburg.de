@@ -1,12 +1,16 @@
 import React from 'react'
 
 import SEO from '../components/seo'
+import Navigation from '../components/Navigation'
+import { Container } from '../utils/styles'
 
 const NotFoundPage = () => (
   <>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <SEO title="Page two" />
+    <Navigation />
+    <Container>
+      <p>This page doesn't exist.</p>
+    </Container>
   </>
 )
 
