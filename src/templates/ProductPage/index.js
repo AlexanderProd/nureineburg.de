@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Slide } from 'react-slideshow-image'
 
+import SEO from '../../components/seo'
 import Navigation from '../../components/Navigation'
 import ProductForm from '../../components/ProductForm'
 import { useWindowDimensions } from '../../utils/hooks'
@@ -47,11 +48,11 @@ const ProductPage = ({ data }) => {
           </Slide>
         )
       }
-      return product.images.map(i => (
+      return product.images.map(image => (
         <Img
-          fluid={i.localFile.childImageSharp.fluid}
+          fluid={image.localFile.childImageSharp.fluid}
           alt={product.title}
-          key={i.id}
+          key={image.id}
         />
       ))
     }
@@ -59,6 +60,7 @@ const ProductPage = ({ data }) => {
 
   return (
     <>
+      <SEO title={product.title} description={product.description} />
       <Navigation/>
       <Container>
         <MainContent>
@@ -87,6 +89,7 @@ export const query = graphql`
       title
       handle
       productType
+      description
       descriptionHtml
       shopifyId
       options {
