@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 import SEO from '../components/seo'
 import Navigation from '../components/Navigation'
 import Slideshow from '../components/Slideshow'
+import Footer from '../components/Footer'
 import { Container } from '../utils/styles'
 import slide_1 from '../images/slider_1.jpg'
 import slide_2 from '../images/slider_2.jpg'
@@ -52,6 +53,7 @@ const IndexPage = () => (
         <p>
           Lorem Ipsum
         </p>
+        <Footer/>
       </Container>
     </Wrapper>
   </>
