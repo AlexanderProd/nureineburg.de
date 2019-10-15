@@ -23,16 +23,36 @@ module.exports = {
     ],
     secondaryNav: [
       {
-        name: 'AGB',
-        link: '/page-2'
+        name: 'Versand',
+        link: '/versand'
+      },
+      {
+        name: 'Nachhaltigkeit',
+        link: '/nachhaltigkeit'
+      },
+      {
+        name: 'Pflegeanleitung',
+        link: '/pflegeanleitung'
+      },
+      {
+        name: 'Größentabelle',
+        link: '/groesentabelle'
       },
       {
         name: 'Impressum',
-        link: '/page-2',
+        link: '/impressum',
       },
       {
-        name: 'Datenschutz',
-        link: '/404',
+        name: 'Datenschutzerklärung',
+        link: '/datenschutzerklaerung',
+      },
+      {
+        name: 'widerrufsbelehrung',
+        link: '/widerrufsbelehrung',
+      },
+      {
+        name: 'AGB',
+        link: '/agb'
       },
     ]
   },
