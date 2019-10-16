@@ -47,7 +47,7 @@ module.exports = {
         link: '/datenschutzerklaerung',
       },
       {
-        name: 'widerrufsbelehrung',
+        name: 'Widerrufsbelehrung',
         link: '/widerrufsbelehrung',
       },
       {
