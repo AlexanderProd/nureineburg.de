@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
-import { useStaticQuery, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 
 import LayoutContext from './../../../context/LayoutContext'
+import { useSiteMetadata } from '../../../utils/hooks'
 import { 
   Wrapper,
   ItemsList,
@@ -11,38 +12,23 @@ import {
 
 const MobileNav = ({ visible }) => {
   const { toggleMobileNav } = useContext(LayoutContext)
-  const { site: { siteMetadata } } = useStaticQuery(graphql`
-  query MobileNav {
-    site {
-      siteMetadata {
-        primaryNav {
-          name
-          link
-        }
-        secondaryNav {
-          name
-          link
-        }
-      }
-    }
-  }
-  `)
+  const { primaryNav, secondaryNav } = useSiteMetadata()
 
   const handleClick = link => {
     toggleMobileNav()
     navigate(link)
   }
 
-  const PrimaryNav = siteMetadata.primaryNav
-    ? siteMetadata.primaryNav.map(({ name, link }) => (
+  const PrimaryNav = primaryNav
+    ? primaryNav.map(({ name, link }) => (
       <PrimaryNavItem key={name} onClick={() => handleClick(link)}>
         {name}
       </PrimaryNavItem>
     ))
     : null
 
-  const SecondaryNav = siteMetadata.secondaryNav
-    ? siteMetadata.secondaryNav.map(({ name, link }) => (
+  const SecondaryNav = secondaryNav
+    ? secondaryNav.map(({ name, link }) => (
       <SecondaryNavItem key={name} onClick={() => handleClick(link)}>
         {name}
       </SecondaryNavItem>

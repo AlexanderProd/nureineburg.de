@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
@@ -47,4 +48,27 @@ export const useOuterClick = (onOuterClick, innerRef) => {
     },
     [onOuterClick, innerRef] // invoke again, if inputs have changed
   )
+}
+
+export const useSiteMetadata = () => {
+  const { site } = useStaticQuery(graphql`
+    query {
+      site {
+        siteMetadata {
+          title
+          description
+          author
+          primaryNav {
+						name
+						link
+					}
+          secondaryNav {
+						name
+						link
+					}
+        }
+      }
+    }
+  `)
+  return site.siteMetadata
 }

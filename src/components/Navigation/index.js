@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 
 import StoreContext from '../../context/StoreContext'
 import LayoutContext from '../../context/LayoutContext'
-import { useWindowDimensions } from '../../utils/hooks'
+import { useWindowDimensions, useSiteMetadata } from '../../utils/hooks'
 import { Container } from '../../utils/styles'
 import Cart from '../Cart'
 import MobileNav from './MobileNav'
@@ -43,21 +42,10 @@ const Navigation = ({ color }) => {
 	const [quantity, setQuantity] = useState(countQuantity(checkout))
 	const [navBarColor, setNavBarColor] = useState(color)
 	const { width } = useWindowDimensions()
-	const { site: { siteMetadata }} = useStaticQuery(graphql`
-    query Navigation {
-			site {
-				siteMetadata {
-					primaryNav {
-						name
-						link
-					}
-				}
-			}
-		}
-	`)
+	const { primaryNav } = useSiteMetadata()
 	
-	const MenuItems = siteMetadata.primaryNav 
-		? siteMetadata.primaryNav.map(({ name, link }) => (
+	const MenuItems = primaryNav 
+		? primaryNav.map(({ name, link }) => (
 			<MenuItem key={name} to={link} color={color}>
 				{name}
 			</MenuItem>
