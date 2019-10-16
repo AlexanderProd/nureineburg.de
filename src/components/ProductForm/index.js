@@ -4,6 +4,7 @@ import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
 
 import StoreContext from '../../context/StoreContext'
+import LayoutContext from '../../context/LayoutContext'
 import { Button } from '../../utils/styles'
 import {
   Wrapper,
@@ -28,18 +29,31 @@ const ProductForm = ({ product }) => {
     adding,
     addVariantToCart
   } = useContext(StoreContext)
+  const { toggleCart } = useContext(LayoutContext)
 
   const productVariant =
     client.product.helpers.variantForOptions(product, variant) ||
     variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
+  const [availableOptions, setAvailableOptions] = useState([])
+  
+
+  useEffect(() => {
+    variants.forEach(({ availableForSale, selectedOptions }) => {
+      if (availableForSale) {
+        selectedOptions.forEach(option => {
+          setAvailableOptions(availableOptions.push({ ...option }))
+        });
+      }
+    })
+  }, [])
 
   useEffect(() => {
     checkAvailability(product.shopifyId)
   }, [productVariant])
 
   const checkAvailability = productId => {
-    client.product.fetch(productId).then(product => {
+    client.product.fetch(productId).then(() => {
       // this checks the currently selected variant for availability
       const result = variants.filter(
         variant => variant.shopifyId === productVariant.shopifyId
@@ -61,8 +75,9 @@ const ProductForm = ({ product }) => {
     setVariant({ ...selectedVariant });
   };
 
-  const handleAddToCart = () => {
-    addVariantToCart(productVariant.shopifyId, quantity)
+  const handleAddToCart = async () => {
+    await addVariantToCart(productVariant.shopifyId, quantity)
+    toggleCart()
   }
 
   const price = Intl.NumberFormat(undefined, {

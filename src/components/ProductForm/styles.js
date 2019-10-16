@@ -35,6 +35,7 @@ export const OptionValues = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
   @media (min-width: ${breakpoints.m}px) {
     justify-content: flex-start;
   }
@@ -59,6 +60,7 @@ export const ProductValue = styled.div`
   font-weight: 400;
   cursor: pointer;
   opacity: ${({ active }) => (active ? 1 : 0.8)};
+
   &:hover {
     opacity: 1;
   }
@@ -77,9 +79,11 @@ export const ActiveWrapper = styled.div`
   background-color: transparent;
   margin-right: ${layout.spacing}px;
   transition: all 0.3s ease;
+
   &:hover {
     border-color: ${({ active }) => (active ? '#000' : '#dedede')};
   }
+  
   &:last-of-type {
     margin-right: 0;
   }

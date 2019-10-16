@@ -25,31 +25,37 @@ export class StoreProvider extends React.Component {
   state = {
     ...defaultStoreContext,
     addVariantToCart: (variantId, quantity) => {
-      if (variantId === '' || !quantity) {
-        console.error('Both a size and quantity are required.')
-        return
-      }
-
-      this.setState(state => ({
-        ...state,
-        adding: true,
-      }))
-
-      const { checkout, client } = this.state
-      const checkoutId = checkout.id
-      const lineItemsToUpdate = [
-        { variantId, quantity: parseInt(quantity, 10) },
-      ]
-
-      return client.checkout
-        .addLineItems(checkoutId, lineItemsToUpdate)
-        .then(checkout => {
-          this.setState(state => ({
-            ...state,
-            checkout,
-            adding: false,
-          }))
-        })
+      return new Promise((resolve, reject) => {
+        if (variantId === '' || !quantity) {
+          console.error('Both a size and quantity are required.')
+          resolve()
+        }
+  
+        this.setState(state => ({
+          ...state,
+          adding: true,
+        }))
+  
+        const { checkout, client } = this.state
+        const checkoutId = checkout.id
+        const lineItemsToUpdate = [
+          { variantId, quantity: parseInt(quantity, 10) },
+        ]
+  
+        client.checkout
+          .addLineItems(checkoutId, lineItemsToUpdate)
+          .then(checkout => {
+            this.setState(state => ({
+              ...state,
+              checkout,
+              adding: false,
+            }))
+            resolve()
+          })
+          .catch(err => {
+            reject(err)
+          })
+      })
     },
     removeLineItem: (client, checkoutID, lineItemID) => {
       return client.checkout
