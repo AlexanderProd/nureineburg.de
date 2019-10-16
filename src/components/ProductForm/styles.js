@@ -53,7 +53,7 @@ export const ProductValue = styled.div`
   margin-right: ${layout.spacing}px;
   margin-bottom: ${layout.spacing}px;
   background-color: ${({ active }) => (active ? '#F2F2F2' : 'transparent')};
-  color: black;
+  color: ${(({ disabled }) => (disabled ? 'grey' : 'black'))};
   overflow: hidden;
   font-family: "Montserrat","HelveticaNeue","Helvetica Neue",sans-serif;
   font-size: ${typo.small};
@@ -62,7 +62,7 @@ export const ProductValue = styled.div`
   opacity: ${({ active }) => (active ? 1 : 0.8)};
 
   &:hover {
-    opacity: 1;
+    opacity: ${(({ disabled }) => (disabled ? 0.8 : 1))};;
   }
 `
 

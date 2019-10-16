@@ -86,6 +86,20 @@ const ProductForm = ({ product }) => {
     style: 'currency',
   }).format(variant.price);
 
+  const checkDisabled = (variants, name, value) => {
+    const match = find(variants, { 
+      selectedOptions: [{ 
+        name: name, 
+        value: value 
+      }] 
+    }) 
+    if (match === undefined)
+      return true
+    if (match.availableForSale === true)
+      return false
+    return true
+  }
+
   return (
     <Wrapper>
       <ProductPrice>{price}</ProductPrice>
@@ -98,6 +112,7 @@ const ProductForm = ({ product }) => {
                 key={`${id}-${value}`}
                 active={variant.selectedOptions[optionIndex].value === value}
                 onClick={() => handleClick(optionIndex, value)}
+                disabled={checkDisabled(variants, name, value)}
               >
                 {value}
               </ProductValue>
