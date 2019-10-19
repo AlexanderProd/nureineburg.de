@@ -21,8 +21,13 @@ export const Wrapper = styled.div`
 export const Links = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-content: flex-start;
+  align-items: flex-start;
+
+  @media (max-width: ${breakpoints.s}px){
+    align-items: center;
+  }
 `
 
 export const Item = styled(Link)`
@@ -30,11 +35,34 @@ export const Item = styled(Link)`
   line-height: 1.563;
   font-size: 16px;
   text-decoration: none;
+  margin-bottom: 0.25rem;
+`
+
+export const SocialMediaLinks = styled.ul`
+  list-style: none outside;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+    margin-left: 5px;
+  }
 `
 
 export const Cards = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  align-content: flex-start;
+  text-align: right;
+
+  svg {
+    margin-left: 0.5rem;
+  }
+
+  @media (max-width: ${breakpoints.s}px){
+    text-align: center;
+  }
 `

@@ -58,6 +58,10 @@ export const useSiteMetadata = () => {
           title
           description
           author
+          socialLinks {
+            name
+            link
+          }
           primaryNav {
 						name
 						link
