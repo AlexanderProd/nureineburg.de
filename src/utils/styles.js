@@ -4,13 +4,7 @@ import styled from '@emotion/styled'
 import { Global, css } from "@emotion/core"
 
 export const colors = {
-  background: '#fff',
-  color: '#111',
-  colorOnPrimary: '#fff',
-  footerBackground: '#1f292f',
-  footerColor: '#fff',
-  primaryColor: '#1f2a30',
-  secondaryFooterBackground: '#192126',
+  whiteSmoke: '#F6F6F6',
 }
 
 export const breakpoints = {
@@ -84,21 +78,14 @@ export const MainContent = styled.main`
 
 export const TwoColumnGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2rem 1fr;
-  grid-template-rows: 1auto;
-  grid-template-areas: "left . right";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: ". .";
+  grid-column-gap: 2rem;
 
   @media (max-width: ${breakpoints.l}px){
     display: block;
   }
-`
-
-export const GridLeft = styled.div`
-  grid-area: left;
-`
-
-export const GridRight = styled.div`
-  grid-area: right;
 `
 
 export const PageTitle = styled.h1`

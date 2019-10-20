@@ -65,16 +65,16 @@ const ProductPage = ({ data }) => {
       <Container>
         <MainContent>
           <TwoColumnGrid>
-            <GridLeft>
+            <div>
               <ProductImages/>
-            </GridLeft>
-            <GridRight>
+            </div>
+            <div>
               <ProductTitle>{product.title}</ProductTitle>
               <ProductForm product={product} />
               <ProductDescription 
                 dangerouslySetInnerHTML={{ __html: product.descriptionHtml }} 
               />
-            </GridRight>
+            </div>
           </TwoColumnGrid>
         </MainContent>
       </Container>
