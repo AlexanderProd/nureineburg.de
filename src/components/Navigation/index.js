@@ -44,14 +44,6 @@ const Navigation = ({ color }) => {
 	const { width } = useWindowDimensions()
 	const { primaryNav } = useSiteMetadata()
 	
-	const MenuItems = primaryNav 
-		? primaryNav.map(({ name, link }) => (
-			<MenuItem key={name} to={link} color={color}>
-				{name}
-			</MenuItem>
-		))
-		: null
-	
 	useEffect(() => {
 		setQuantity(countQuantity(checkout))
 	}, [checkout])
@@ -78,7 +70,11 @@ const Navigation = ({ color }) => {
 					</GridLeft>
 					<GridRight>
 						<MenuWrapper>
-							{MenuItems}
+							{primaryNav.map(({ name, link }) => (
+								<MenuItem key={name} to={link} color={color}>
+									{name}
+								</MenuItem>
+							))}
 							<CartIcon 
 								onClick={() => {
 									setMobileNavVisible(false)
