@@ -26,6 +26,7 @@ export const Links = styled.div`
   align-items: flex-start;
 
   @media (max-width: ${breakpoints.s}px){
+    margin-bottom: 2rem;
     align-items: center;
   }
 `
