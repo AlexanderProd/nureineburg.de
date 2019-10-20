@@ -12,41 +12,39 @@ import { Img } from '../../utils/styles'
 
 const ProductGrid = () => {
   const { checkout } = useContext(StoreContext)
-  const { allShopifyProduct } = useStaticQuery(
-    graphql`
-      query {
-        allShopifyProduct(
-          sort: {
-            fields: [createdAt]
-            order: DESC
-          }
-        ) {
-          edges {
-            node {
+  const { allShopifyProduct } = useStaticQuery(graphql`
+    query {
+      allShopifyProduct(
+        sort: {
+          fields: [createdAt]
+          order: DESC
+        }
+      ) {
+        edges {
+          node {
+            id
+            title
+            handle
+            createdAt
+            images {
               id
-              title
-              handle
-              createdAt
-              images {
-                id
-                originalSrc
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 910) {
-                      ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                    }
+              originalSrc
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 910) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                   }
                 }
               }
-              variants {
-                price
-              }
+            }
+            variants {
+              price
             }
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   const getPrice = price => Intl.NumberFormat(undefined, {
     currency: checkout.currencyCode ? checkout.currencyCode : 'EUR',

@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   z-index: 3;
   position: absolute; 
   width: ${({ visible }) => visible ? '100%' : '0'};
-  min-height: 100vh;
+  height: 100vh;
   background-color: rgba(28, 29, 29, 1);
   color: white;
   overflow-x: hidden;

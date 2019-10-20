@@ -35,18 +35,6 @@ const ProductForm = ({ product }) => {
     client.product.helpers.variantForOptions(product, variant) ||
     variant
   const [available, setAvailable] = useState(productVariant.availableForSale)
-  const [availableOptions, setAvailableOptions] = useState([])
-  
-
-  useEffect(() => {
-    variants.forEach(({ availableForSale, selectedOptions }) => {
-      if (availableForSale) {
-        selectedOptions.forEach(option => {
-          setAvailableOptions(availableOptions.push({ ...option }))
-        });
-      }
-    })
-  }, [])
 
   useEffect(() => {
     checkAvailability(product.shopifyId)
@@ -63,34 +51,28 @@ const ProductForm = ({ product }) => {
   }
 
   const handleClick = (optionIndex, value) => {
-    const currentOptions = [...variant.selectedOptions];
+    const currentOptions = [...variant.selectedOptions]
 
     currentOptions[optionIndex] = {
       ...currentOptions[optionIndex],
       value,
-    };
+    }
 
-    const selectedVariant = find(variants, ({ selectedOptions }) => isEqual(currentOptions, selectedOptions));
+    const selectedVariant = find(variants, ({ selectedOptions }) => isEqual(currentOptions, selectedOptions))
 
-    setVariant({ ...selectedVariant });
-  };
+    setVariant({ ...selectedVariant })
+  }
 
   const handleAddToCart = async () => {
     await addVariantToCart(productVariant.shopifyId, quantity)
     toggleCart()
   }
 
-  const price = Intl.NumberFormat(undefined, {
-    currency: minVariantPrice.currencyCode,
-    minimumFractionDigits: 2,
-    style: 'currency',
-  }).format(variant.price);
-
-  const checkDisabled = (variants, name, value) => {
+  const checkDisabled = (name, value) => {
     const match = find(variants, { 
       selectedOptions: [{ 
-        name: name, 
-        value: value 
+        name: name,
+        value: value
       }] 
     }) 
     if (match === undefined)
@@ -99,6 +81,12 @@ const ProductForm = ({ product }) => {
       return false
     return true
   }
+
+  const price = Intl.NumberFormat(undefined, {
+    currency: minVariantPrice.currencyCode,
+    minimumFractionDigits: 2,
+    style: 'currency',
+  }).format(variant.price)
 
   return (
     <Wrapper>
@@ -112,7 +100,7 @@ const ProductForm = ({ product }) => {
                 key={`${id}-${value}`}
                 active={variant.selectedOptions[optionIndex].value === value}
                 onClick={() => handleClick(optionIndex, value)}
-                disabled={checkDisabled(variants, name, value)}
+                disabled={checkDisabled(name, value)}
               >
                 {value}
               </ProductValue>
