@@ -6,8 +6,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `NurEineBurg - Mode im Zeichen der Burg`,
-    description: `Kick off your next, ecommerce experience with this Gatsby starter. This starter ships with credentials to a shopify demo store so you can try it out immediately.`,
+    title: `NurEineBurg`,
+    description: `Mode im Zeichen der Burg`,
     author: `@alexanderhorl`,
     socialLinks: [
       {
