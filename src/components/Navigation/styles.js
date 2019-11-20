@@ -60,6 +60,7 @@ export const MenuItem = styled(Link)`
   font-family: Montserrat, HelveticaNeue, Helvetica Neue, Helvetica, sans-serif;
   font-weight: 400;
   display: none;
+  border-bottom: 1pt solid transparent;
 
   &:hover {
     border-bottom: 1pt solid ${({ color }) => color ? color : 'black'};
