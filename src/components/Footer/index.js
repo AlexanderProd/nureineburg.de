@@ -49,7 +49,13 @@ const Footer = () => {
 						return (
 							<li>
 								{name.toLowerCase() === 'instagram' ? <Instagram height='18px' /> : null}
-								<a href={link} key={name} target='_blank'>{name}</a>
+								<a 
+									href={link}
+									key={name}
+									target='_blank'
+									rel="noopener noreferrer">
+									{name}
+								</a>
 							</li>
 						)
 					})}
