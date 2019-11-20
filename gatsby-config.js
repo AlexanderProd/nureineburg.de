@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         name: 'Kontakt',
-        link: '/404',
+        link: '/kontakt',
       },
     ],
     secondaryNav: [
