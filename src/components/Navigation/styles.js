@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { Link } from 'gatsby'
 
-import { colors, breakpoints } from '../../utils/styles'
+import { colors, breakpoints } from '~/utils/styles'
 
 export const Wrapper = styled.div`
   position: relative;

@@ -1,16 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import StoreContext from '../../context/StoreContext'
-import LayoutContext from '../../context/LayoutContext'
-import { useWindowDimensions, useSiteMetadata } from '../../utils/hooks'
-import { Container } from '../../utils/styles'
+import StoreContext from '~/context/StoreContext'
+import LayoutContext from '~/context/LayoutContext'
+import { useWindowDimensions, useSiteMetadata } from '~/utils/hooks'
+import { Container } from '~/utils/styles'
 import Cart from '../Cart'
 import MobileNav from './MobileNav'
 import HamburgerIcon from './HamburgerIcon'
 import CloseIcon from './CloseIcon'
 import CartIcon from './CartIcon'
 import Logo from './Logo'
-import { breakpoints } from '../../utils/styles'
+import { breakpoints } from '~/utils/styles'
 import {
 	MenuItem, 
 	Wrapper, 

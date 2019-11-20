@@ -2,17 +2,18 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Slide } from 'react-slideshow-image'
 
-import SEO from '../../components/seo'
-import Navigation from '../../components/Navigation'
-import ProductForm from '../../components/ProductForm'
-import { useWindowDimensions } from '../../utils/hooks'
+import SEO from '~/components/seo'
+import Navigation from '~/components/Navigation'
+import ProductForm from '~/components/ProductForm'
+import Footer from '~/components/Footer'
+import { useWindowDimensions } from '~/utils/hooks'
 import {
   breakpoints,
   Img,
   Container, 
   TwoColumnGrid,
   MainContent,
-} from '../../utils/styles'
+} from '~/utils/styles'
 import {
   ProductTitle,
   ProductDescription
@@ -75,6 +76,7 @@ const ProductPage = ({ data }) => {
             </div>
           </TwoColumnGrid>
         </MainContent>
+        <Footer />
       </Container>
     </>
   )
