@@ -29,9 +29,8 @@ export const layout = {
   spacing: 8,
 }
 
-export const GlobalStyle = props => (
+export const GlobalStyle = () => (
   <Global
-    {...props}
     styles={css`
       html {
         font-family: sans-serif;
@@ -40,9 +39,23 @@ export const GlobalStyle = props => (
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
       }
+
       body {
         margin: 0;
         font-family: "Roboto","HelveticaNeue","Helvetica Neue",sans-serif;
+      }
+
+      p {
+        line-height: 1.4;
+      }
+
+      h3 {
+        font-family: "Montserrat","HelveticaNeue","Helvetica Neue",sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-size: 1.125rem;
       }
     `}
   />
@@ -78,29 +91,11 @@ export const MainContent = styled.main`
 
 export const TwoColumnGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: ". .";
-  grid-column-gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
 
   @media (max-width: ${breakpoints.l}px){
     display: block;
-  }
-`
-
-export const PageTitle = styled.h1`
-  font-size: 1.875rem;
-  font-family: "Old Standard TT",serif;
-  font-weight: 400;
-  margin: 0 0 0.5em;
-  line-height: 1.4;
-  text-align: center;
-  margin-bottom: 50px;
-
-  :after {
-    border-top: solid #1c1d1d;
-    border-width: 1px 0 0 0;
-    width: 50px;
   }
 `
 
@@ -121,16 +116,16 @@ export const Button = styled.button`
   border: none;
   white-space: normal;
 
-  :hover {
+  &:hover {
     opacity: 0.8;
   }
 
-  :disabled {
+  &:disabled {
     background-color: #F6F6F6;
     color: #717171;
     cursor: default;
 
-    :hover {
+    &:hover {
       opacity: 1;
     }
   }
