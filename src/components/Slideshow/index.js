@@ -6,8 +6,8 @@ import { Button } from '../../utils/styles'
 import { 
   SlideshowImage, 
   Caption,
-  H1,
-  H2
+  Title,
+  Subtitle
 } from './styles'
 
 
@@ -33,8 +33,8 @@ const Slideshow = props => {
         <React.Fragment key={id}>
           <SlideshowImage src={image} />
           <Caption color={color}>
-            <H2>{secondText}</H2>
-            <H1>{firstText}</H1>
+            <Subtitle>{firstText}</Subtitle>
+            <Title>{secondText}</Title>
             <Button 
               onClick={() => navigate(buttonLink)}
               color='black'

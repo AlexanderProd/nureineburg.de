@@ -22,9 +22,21 @@ export const Caption = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
+
+  animation: fadedown 1s;
+  @keyframes fadedown {
+    from { 
+      opacity: 0;
+      transform: translateY(-50px)
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0px)
+    }
+  }
 `
 
-export const H1 = styled.h1`
+export const Title = styled.h1`
   font-family: Old Standard TT, serif;
   text-transform: capitalize;
   font-weight: 400;
@@ -38,7 +50,7 @@ export const H1 = styled.h1`
   }
 `
 
-export const H2 = styled.h1`
+export const Subtitle = styled.h2`
   font-weight: 400;
   font-size: 1.25rem;
   text-transform: uppercase;
