@@ -47,7 +47,7 @@ const Footer = () => {
 				<SocialMediaLinks>
 					{socialLinks.map(({ name, link }) => {
 						return (
-							<li>
+							<li key={name}>
 								{name.toLowerCase() === 'instagram' ? <Instagram height='18px' /> : null}
 								<a 
 									href={link}
