@@ -54,7 +54,7 @@ const Navigation = ({ color }) => {
 		} else {
 			setNavBarColor(color)
 		}
-	}, [mobileNavVisible])
+	}, [mobileNavVisible, color])
 
 	return (
 		<>
