@@ -1,3 +1,5 @@
+const path = require('path')
+
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 })
@@ -87,7 +89,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-shopify2`,
+      resolve: `gatsby-source-shopify`,
       options: {
         shopName: process.env.SHOP_NAME,
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN,
@@ -108,6 +110,12 @@ module.exports = {
         trackingId: "UA-134421805-1",
         anonymize: true,
         respectDNT: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        '~': path.join(__dirname, 'src/'),
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
