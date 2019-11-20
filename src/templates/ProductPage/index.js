@@ -10,9 +10,7 @@ import {
   breakpoints,
   Img,
   Container, 
-  TwoColumnGrid, 
-  GridLeft, 
-  GridRight,
+  TwoColumnGrid,
   MainContent,
 } from '../../utils/styles'
 import {
@@ -35,26 +33,28 @@ const ProductPage = ({ data }) => {
     }
 
     if (product.images) {
-      if (width < breakpoints.l) {
-        return (
-          <Slide {...properties}>
-            {product.images.map(i => (
+      return (
+        <div>
+          {width < breakpoints.l 
+            ? <Slide {...properties}>
+                {product.images.map(i => (
+                  <Img
+                    fluid={i.localFile.childImageSharp.fluid}
+                    alt={product.title}
+                    key={i.id}
+                  />
+                ))}
+              </Slide>
+            : product.images.map(image => (
               <Img
-                fluid={i.localFile.childImageSharp.fluid}
+                fluid={image.localFile.childImageSharp.fluid}
                 alt={product.title}
-                key={i.id}
+                key={image.id}
               />
-            ))}
-          </Slide>
-        )
-      }
-      return product.images.map(image => (
-        <Img
-          fluid={image.localFile.childImageSharp.fluid}
-          alt={product.title}
-          key={image.id}
-        />
-      ))
+            ))
+          }
+        </div>
+      )
     }
   }
 
@@ -65,9 +65,7 @@ const ProductPage = ({ data }) => {
       <Container>
         <MainContent>
           <TwoColumnGrid>
-            <div>
-              <ProductImages/>
-            </div>
+            <ProductImages/>
             <div>
               <ProductTitle>{product.title}</ProductTitle>
               <ProductForm product={product} />
