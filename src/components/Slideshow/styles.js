@@ -22,6 +22,7 @@ export const Caption = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
+  text-align: center;
 
   animation: fadedown 1s;
   @keyframes fadedown {
