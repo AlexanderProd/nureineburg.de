@@ -10,7 +10,6 @@ import {
   Subtitle
 } from './styles'
 
-
 const Slideshow = props => {
   const fadeProperties = {
     duration: 5000,
@@ -31,7 +30,7 @@ const Slideshow = props => {
         color,
       }) => (
         <React.Fragment key={id}>
-          <SlideshowImage src={image} />
+          <SlideshowImage fluid={image} />
           <Caption color={color}>
             <Subtitle>{firstText}</Subtitle>
             <Title>{secondText}</Title>

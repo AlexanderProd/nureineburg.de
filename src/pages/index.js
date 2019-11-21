@@ -30,53 +30,67 @@ const Wrapper = styled.div`
   margin-top: 100vh;
 `
 
-const slides = [
-  {
-    id: 1,
-    image: slide_1,
-    firstText: 'Mode & Fashion',
-    secondText: 'Im Zeichen der Burg',
-    buttonLink: '/products',
-    buttonText: 'Jetzt Shoppen',
-    color: 'white',
-  },
-  {
-    id: 2,
-    image: slide_2,
-    firstText: 'Mode & Fashion',
-    secondText: 'Eine Stadt, Eine Marke',
-    buttonLink: '/product/nureinberg-pocket/',
-    buttonText: 'Zum Pocket Shirt',
-    color: 'white',
-  },
-]
-
 const Index = () => {
   const data = useStaticQuery(graphql`
     query IndexPageImages {
       image1: file(relativePath: { eq: "heart.png" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       image2: file(relativePath: { eq: "DSC_6561_ret.jpg" }) {
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
       image3: file(relativePath: { eq: "label.jpeg" }) {
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      slide1: file(relativePath: { eq: "slider_1.jpg" }) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+        }
+      }
+      slide2: file(relativePath: { eq: "slider_2.jpg" }) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
       }
     }
   `)
+
+  const slides = [
+    {
+      id: 1,
+      image: data.slide1.childImageSharp.fluid,
+      firstText: 'Mode & Fashion',
+      secondText: 'Im Zeichen der Burg',
+      buttonLink: '/products',
+      buttonText: 'Jetzt Shoppen',
+      color: 'white',
+    },
+    {
+      id: 2,
+      image: data.slide2.childImageSharp.fluid,
+      firstText: 'Mode & Fashion',
+      secondText: 'Eine Stadt, Eine Marke',
+      buttonLink: '/product/nureinberg-pocket/',
+      buttonText: 'Zum Pocket Shirt',
+      color: 'white',
+    },
+  ]
 
   return (
     <>
@@ -117,7 +131,7 @@ const Index = () => {
             <div>
               <h3>NUREINEBURG LABEL</h3>
               <p>
-                Alle unsere Produkte kommen mit dem offiziellen NurEinBerg Label. Angenäht mit Hand und ❤️ in Nürnberg.
+                Alle unsere Produkte kommen mit dem offiziellen NurEinBerg Label. Angenäht mit Hand und <span role="img" aria-label="heart">❤️</span> in Nürnberg.
               </p>
               <Button onClick={() => navigate('product/nureinberg-basic-black/')}>Zum Shirt</Button>
             </div>

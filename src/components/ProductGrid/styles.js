@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 
-import { breakpoints } from '../../utils/styles'
-
+import { breakpoints } from '~/utils/styles'
 
 export const Grid = styled.div`
   display: grid;
