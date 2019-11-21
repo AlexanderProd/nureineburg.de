@@ -2,7 +2,7 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import { Fade } from 'react-slideshow-image'
 
-import { Button } from '../../utils/styles'
+import { Button } from '~/utils/styles'
 import { 
   SlideshowImage, 
   Caption,
@@ -15,7 +15,7 @@ const Slideshow = props => {
   const fadeProperties = {
     duration: 5000,
     transitionDuration: 500,
-    infinite: false,
+    infinite: true,
     indicators: true,
     arrows: false,
   }
