@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
+import { navigate } from 'gatsby'
 
 import StoreContext from '~/context/StoreContext'
 import LayoutContext from '~/context/LayoutContext'
@@ -66,7 +67,14 @@ const Navigation = ({ color }) => {
 						? <CloseIcon color={navBarColor} onClick={toggleMobileNav} /> 
 						: <HamburgerIcon color={navBarColor} onClick={toggleMobileNav} />}
 					<GridLeft>
-						<Logo to='/' color={navBarColor} height={width > breakpoints.s ? '1.3rem' : '1.1rem'} />
+						<Logo 
+							onClick={() => {
+								setMobileNavVisible(false)
+								navigate('/')
+							}} 
+							color={navBarColor} 
+							height={width > breakpoints.s ? '1.3rem' : '1.1rem'} 
+						/>
 					</GridLeft>
 					<GridRight>
 						<MenuWrapper>

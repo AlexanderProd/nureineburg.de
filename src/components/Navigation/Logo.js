@@ -1,10 +1,9 @@
 import React from 'react'
-import { navigate } from 'gatsby'
 
 import { LogoWrapepr } from './styles'
 
-const Logo = ({ color, height = 32, to }) => (
-  <LogoWrapepr onClick={() => navigate(to)}>
+const Logo = ({ color, height = 32, onClick }) => (
+  <LogoWrapepr onClick={onClick}>
     <svg height={height} viewBox="0 0 400 39" style={{ color }}>
       <path fill="currentColor" d="M4.6,7.2v30.1H0V0h4.8l21.5,29.5V0h4.6v37.4h-4.5L4.6,7.2z"/>
       <path fill="currentColor" d="M39.6,0h4.6v22.7c0,6.8,3.7,11.1,10.6,11.1c6.9,0,10.6-4.3,10.6-11.1V0h4.6v22.8C70.1,32.1,65,38,54.9,38

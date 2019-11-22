@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useSiteMetadata } from '../../utils/hooks'
+import { useSiteMetadata } from '~/utils/hooks'
 import { 
 	Wrapper,
 	Links,

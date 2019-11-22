@@ -49,7 +49,7 @@ const Index = () => {
       }
       image3: file(relativePath: { eq: "label.jpeg" }) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid {
             ...GatsbyImageSharpFluid_withWebp
           }
         }
@@ -77,7 +77,7 @@ const Index = () => {
       image: data.slide1.childImageSharp.fluid,
       firstText: 'Mode & Fashion',
       secondText: 'Im Zeichen der Burg',
-      buttonLink: '/products',
+      buttonLink: '/produkte',
       buttonText: 'Jetzt Shoppen',
       color: 'white',
     },
