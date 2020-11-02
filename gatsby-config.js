@@ -1,24 +1,24 @@
 const path = require('path')
 
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
   siteMetadata: {
-    title: `NurEineBurg`,
+    title: `NurEinBerg`,
     description: `Mode im Zeichen der Burg`,
     author: `@alexanderhorl`,
     socialLinks: [
       {
         name: 'Instagram',
-        link: 'https://instagram.com/nureineburg'
-      }
+        link: 'https://instagram.com/nureinberg',
+      },
     ],
     primaryNav: [
       {
         name: 'Produkte',
-        link: '/produkte'
+        link: '/produkte',
       },
       {
         name: 'Über Uns',
@@ -32,19 +32,19 @@ module.exports = {
     secondaryNav: [
       {
         name: 'Versand',
-        link: '/versand'
+        link: '/versand',
       },
       {
         name: 'Nachhaltigkeit',
-        link: '/nachhaltigkeit'
+        link: '/nachhaltigkeit',
       },
       {
         name: 'Pflegeanleitung',
-        link: '/pflegeanleitung'
+        link: '/pflegeanleitung',
       },
       {
         name: 'Größentabelle',
-        link: '/groesentabelle'
+        link: '/groesentabelle',
       },
       {
         name: 'Impressum',
@@ -60,9 +60,9 @@ module.exports = {
       },
       {
         name: 'AGB',
-        link: '/agb'
+        link: '/agb',
       },
-    ]
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -100,14 +100,14 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Montserrat', 'Old Standard TT', 'Roboto']
-        }
-      }
+          families: ['Montserrat', 'Old Standard TT', 'Roboto'],
+        },
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-97218477-1",
+        trackingId: 'UA-97218477-1',
         anonymize: true,
         respectDNT: true,
       },

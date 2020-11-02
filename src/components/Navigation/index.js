@@ -23,11 +23,7 @@ import {
 
 const countQuantity = ({ lineItems=[] }) => {
 	let quantity = 0
-
-	lineItems.forEach(item => {
-		quantity = quantity + item.quantity
-	});
-
+	lineItems.forEach(item => quantity += item.quantity)
 	return quantity
 }
 
