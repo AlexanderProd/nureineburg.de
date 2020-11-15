@@ -1,4 +1,4 @@
-# nureinberg.de
+# nureineburg.de
 
 [![JamStackBox Status](https://jamstackbox.alexanderhoerl.de/badge/nureineburg)](https://github.com/AlexanderProd/jam-stack-box)
 
